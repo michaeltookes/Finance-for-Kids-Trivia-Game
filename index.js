@@ -1,9 +1,15 @@
+/*
 const screen1 = document.getElementById("screen1");
 const screen2 = document.getElementById("screen2");
 const screen3 = document.getElementById("screen3");
 const button1 = document.getElementById("button1");
 const button2 = document.getElementById("button2");
 const button3 = document.getElementById("button3");
+
+const questionOneChoices = ["A Car", "A Watch", "A Boat", "A House"];
+const questionTwoChoices = ["Stocks", "A Car", "Real Estate"];
+const questionThreeChoices = ["True", "False"];
+*/
 
 const questions = [
 
@@ -12,23 +18,46 @@ const questions = [
 
     {
         question: "Which item is an Asset?",
-        choice: ["A Car", "A Watch", "A Boat", "A House"],
+        choices: ["A Car", "A Watch", "A Boat", "A House"],
         answer: "A House"
     },
 
     {
         question: "Which item is a Liability?",
-        choice: ["Stocks", "A Car", "Real Estate"],
+        choices: ["Stocks", "A Car", "Real Estate"],
         answer: "A Car"
     },
 
     {
         question: "True or False: Credit cards are bad and should NEVER be used?",
-        choice: ["True", "False"],
+        choices: ["True", "False"],
         answer: "False"
     }
 
 ];
+
+let container = document.getElementById("quiz-container");
+
+for (let i = 0; i < questions.length; i++) {
+    let question = questions[i].question;
+    let choices = questions[i].choices;
+
+    let questionElement = document.createElement("div");
+    questionElement.innerText = question;
+    container.appendChild(questionElement);
+
+    for (let j = 0; j < choices.length; j++) {
+        let choice = choices[j];
+        let label = document.createElement("label");
+        let input = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "question" + i;
+        radio.value = choice;
+        label.appendChild(radio);
+        label.appendChild(document.createTextNode(choice));
+        container.appendChild(label);
+    }
+}
 
 /* placed this in here as a Proof of Concept for myself.
 // We can remove the following after the Code Review
@@ -39,6 +68,7 @@ function startQuiz() {
 }
 */
 
+/*
 // Create a div to serve as the modal overlay
 const modalOverlay = document.createElement("div");
 modalOverlay.classList.add("modal-overlay");
@@ -67,12 +97,7 @@ openButton.addEventListener("click", () => {
 
 const question1 = `
 <h1>Question 1:</h1>
-<p>${questions[0].question}</p>
-<ul>
-    <li>${questions[0].choice[0]}</li>
-    <li>${questions[0].choice[1]}</li>
-    <li>${questions[0].choice[2]}</li>
-</ul> `;
+<p>${questions[0].question}</p>`
 
 document.getElementById("screen1").innerHTML = question1;
 
@@ -96,3 +121,4 @@ const question3 = `
 </ul> `;
 
 document.getElementById("screen3").innerHTML = question3;
+*/
