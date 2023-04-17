@@ -1,3 +1,10 @@
+<<<<<<< Updated upstream
+=======
+let currentQuestion = -1;
+let timeRemaining = 0;
+let score = 0;
+/*
+>>>>>>> Stashed changes
 const screen1 = document.getElementById("screen1");
 const screen2 = document.getElementById("screen2");
 const screen3 = document.getElementById("screen3");
@@ -5,10 +12,19 @@ const button1 = document.getElementById("button1");
 const button2 = document.getElementById("button2");
 const button3 = document.getElementById("button3");
 
+<<<<<<< Updated upstream
 const questions = [
+=======
+const questionOneChoices = ["A Car", "A Watch", "A Boat", "A House"];
+const questionTwoChoices = ["Stocks", "A Car", "Real Estate"];
+const questionThreeChoices = ["True", "False"];
+*/
 
-// Will add more questions once we have a better idea of what is relevant.
-// This following is a placeholder for the time being
+let questions = [
+>>>>>>> Stashed changes
+
+    // Will add more questions once we have a better idea of what is relevant.
+    // This following is a placeholder for the time being
 
     {
         question: "Which item is an Asset?",
@@ -30,6 +46,99 @@ const questions = [
 
 ];
 
+<<<<<<< Updated upstream
+=======
+function start() {
+    console.log("start function called");
+    timeRemaining = 60;
+    document.getElementById("timeRemaining").innerHTML = timeRemaining;
+
+    timer = setInterval(function () {
+        timeRemaining--;
+        document.getElementById("timeRemaining").innerHTML = timeRemaining;
+        if (timeRemaining <= 0) {
+            clearInterval(timer);
+            endGame();
+        }
+    }, 1000);
+
+    nextQuestion();
+}
+
+function incorrect() {
+    timeRemaining -= 10;
+    console.log("Incorrect!")
+    nextQuestion();
+}
+
+//increases score if answered correctly
+function correct() {
+    score += 1;
+    console.log("Correct!")
+    nextQuestion();
+}
+
+function nextQuestion() {
+    currentQuestion++;
+
+    if (currentQuestion > questions.length - 1) {
+        endGame();
+        return;
+    }
+
+    var quizContent = "<h2>" + questions[currentQuestion].question + "</h2>"
+
+    console.log(quizContent);
+
+    for (var x = 0; x < questions[currentQuestion].choices.length; x++) {
+        // ternary operator (true/false)
+        var answerFunction = (questions[currentQuestion].choices[x] == questions[currentQuestion].answer)?"correct()":"incorrect()";
+        var html = `<button onclick="${answerFunction}"> ${questions[currentQuestion].choices[x]}</button>`
+        quizContent += html
+
+        // var answerFunction;
+        // if (questions[currentQuestion].choices[x] == questions[currentQuestion].answer) {
+        //     answerFunction = correct;
+        // } else {
+        //     answerFunction = incorrect;
+        // }
+        // console.log(answerFunction);
+        // var html = `<button onclick="${answerFunction}"> ${questions[currentQuestion].choices[x]}</button>`
+        // quizContent += html;
+    }
+    console.log(document.getElementById("quizBody"));
+    document.getElementById("quizBody").innerHTML = quizContent;
+}
+
+
+function endGame() {
+    clearInterval(timer);
+}
+
+// let container = document.getElementById("quiz-container");
+
+// for (let i = 0; i < questions.length; i++) {
+//     let question = questions[i].question;
+//     let choices = questions[i].choices;
+
+//     let questionElement = document.createElement("div");
+//     questionElement.innerText = question;
+//     container.appendChild(questionElement);
+
+//     for (let j = 0; j < choices.length; j++) {
+//         let choice = choices[j];
+//         let label = document.createElement("label");
+//         let input = document.createElement("input");
+//         radio.type = "radio";
+//         radio.name = "question" + i;
+//         radio.value = choice;
+//         label.appendChild(radio);
+//         label.appendChild(document.createTextNode(choice));
+//         container.appendChild(label);
+//     }
+// }
+
+>>>>>>> Stashed changes
 /* placed this in here as a Proof of Concept for myself.
 // We can remove the following after the Code Review
 
